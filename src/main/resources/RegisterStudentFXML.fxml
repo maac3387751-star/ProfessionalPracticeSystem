@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uv.lis.professionalpracticesystem.GUIviews.controllers.RegisterStudentController">
+   <children>
+      <VBox layoutX="13.0" layoutY="14.0" prefHeight="670.0" prefWidth="594.0">
+         <children>
+            <ScrollPane fitToWidth="true" prefHeight="702.0" prefWidth="594.0">
+               <content>
+                  <GridPane prefHeight="650.0" prefWidth="570.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.79996337890626" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.39995117187502" minWidth="10.0" prefWidth="168.80000000000004" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.19999084472659" minWidth="10.0" prefWidth="136.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.3999755859375" minWidth="10.0" prefWidth="165.39999999999998" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <!-- User Data rows -->
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <!-- Student Data rows -->
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <!-- Assignments rows -->
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="34.0" prefWidth="300.0" text="Registrar estudiante" GridPane.columnSpan="4">
+                           <font><Font name="System Bold" size="23.0" /></font>
+                           <padding><Insets left="5.0" /></padding>
+                        </Label>
+                        
+                        <Label text="Nombres:" GridPane.rowIndex="1"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="namesTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+                        
+                        <Label text="Apellidos:" GridPane.rowIndex="2"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="lastNamesTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+                        
+                        <Label text="Correo Electrónico:" GridPane.rowIndex="3"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+
+                        <Label text="Teléfono:" GridPane.rowIndex="4"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+
+
+                        <Label prefHeight="34.0" prefWidth="300.0" text="Datos de Escolares" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                           <font><Font name="System Bold" size="12.0" /></font>
+                           <padding><Insets left="5.0" /></padding>
+                        </Label>
+
+                        <Label text="Matrícula:" GridPane.rowIndex="6"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="enrollmentTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+
+                        <Label text="Género:" GridPane.rowIndex="7"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <ComboBox fx:id="genderComboBox" prefWidth="410.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="7"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></ComboBox>
+
+                        <Label text="Lengua Indígena:" GridPane.rowIndex="8"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <TextField fx:id="indigenousLanguageTextField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="8"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></TextField>
+
+
+                        <Label prefHeight="34.0" prefWidth="300.0" text="Asignaciones" GridPane.columnSpan="4" GridPane.rowIndex="9">
+                           <font><Font name="System Bold" size="12.0" /></font>
+                           <padding><Insets left="5.0" /></padding>
+                        </Label>
+
+                        <Label text="Experiencia Educativa:" GridPane.columnSpan="2" GridPane.rowIndex="10"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <ComboBox fx:id="nrcComboBox" prefWidth="410.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="10"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></ComboBox>
+
+                        <Label text="Proyecto:" GridPane.rowIndex="11"><GridPane.margin><Insets left="10.0" /></GridPane.margin></Label>
+                        <ComboBox fx:id="projectComboBox" prefWidth="410.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="11"><GridPane.margin><Insets left="30.0" right="10.0" /></GridPane.margin></ComboBox>
+
+
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="12">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#handleRegisterStudent" text="Registrar" />
+                            <Button mnemonicParsing="false" onAction="#handleCancelRegister" text="Cancelar" />
+                          </buttons>
+                           <GridPane.margin><Insets right="10.0" /></GridPane.margin>
+                        </ButtonBar>
+
+                     </children>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

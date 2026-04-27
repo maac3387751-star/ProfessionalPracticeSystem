@@ -1,0 +1,7 @@
+/target/
+src/config.properties
+src/SPP.sql
+
+.mvn/
+mvnw
+mvnw.cmd

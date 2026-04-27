@@ -1,0 +1,13 @@
+module uv.lis.professionalpracticesystem {
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.sql;
+    requires javafx.graphics;
+
+    opens uv.lis.professionalpracticesystem to javafx.graphics, javafx.fxml;
+    opens uv.lis.professionalpracticesystem.GUIviews.controllers to javafx.fxml;
+
+    exports uv.lis.professionalpracticesystem;
+    exports uv.lis.professionalpracticesystem.GUIviews;
+    exports uv.lis.professionalpracticesystem.GUIviews.controllers;
+}
