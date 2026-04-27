@@ -66,6 +66,12 @@ public class ProfessorDAO implements IProfessorDAO {
         professorDTO.setRegistrationDate(resultSet.getDate("fechaRegistro"));
         professorDTO.setDeactivationDate(resultSet.getDate("fechaBaja"));
         professorDTO.setIdUser(resultSet.getInt("idUsuario"));
+        
+        boolean statusProfessor = resultSet.getBoolean("estatus");
+        professorDTO.setProfessorStatus(statusProfessor ? "Activo" : "Inactivo");
+        
+        professorDTO.setEmail(resultSet.getString("correo"));
+        professorDTO.setNames(resultSet.getString("nombre"));
 
         return professorDTO;
     }
@@ -104,8 +110,12 @@ public class ProfessorDAO implements IProfessorDAO {
     public ProfessorDTO getProfessorByFacultyId(String facultyId) throws DatabaseSystemException {
         ProfessorDTO foundProfessor = null;
 
-        String newQueryDataBase = "SELECT numeroPersonal,turno,esCoordinador, "
-                + "fechaRegistro,fechaBaja,idUsuario FROM profesor WHERE numeroPersonal = ?";
+        String newQueryDataBase = "SELECT p.numeroPersonal,p.turno,p.esCoordinador, "
+                + "p.fechaRegistro,p.fechaBaja,p.idUsuario, u.estatus, u.correo,"
+                + "u.nombre "
+                + "FROM profesor p "
+                + "INNER JOIN usuario u ON p.idUsuario = u.idUsuario"
+                + "WHERE p.numeroPersonal = ?";
 
         try (Connection newConnection = newDataBaseConnection.getConnection(); 
             PreparedStatement preparedStatement = newConnection.prepareStatement(newQueryDataBase)) {

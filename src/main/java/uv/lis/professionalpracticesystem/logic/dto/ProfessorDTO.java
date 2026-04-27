@@ -12,8 +12,17 @@ public class ProfessorDTO extends UserDTO {
     private Boolean isUserCoordinator;
     private Date registrationDate;
     private Date deactivationDate;
+    private String professorStatus;
     
     public ProfessorDTO () {}
+
+    public String getProfessorStatus() {
+        return professorStatus;
+    }
+
+    public void setProfessorStatus(String professorStatus) {
+        this.professorStatus = professorStatus;
+    }
 
     public String getFacultyId() {
         return facultyId;
