@@ -19,15 +19,16 @@ public class PPSMainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
        try {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterStudent.fxml"));
+           //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterStudent.fxml"));
            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterProject.fxml"));
-           //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InactivateProfessor.fxml"));
            Parent root = loader.load();
            
            Scene scene = new Scene(root);
-           primaryStage.setTitle("SPP Registrar Estudiante");
-           //primaryStage.setTitle("SPP Registrar Organización");
+           //primaryStage.setTitle("SPP Registrar Estudiante");
+           //primaryStage.setTitle("SPP Registrar Proyecto");
+           primaryStage.setTitle("SPP Registrar Organización Vinculada");
            //primaryStage.setTitle("SPP Inactivar Profesor");
            primaryStage.setScene(scene);
            primaryStage.setResizable(false);

@@ -41,9 +41,9 @@ public class ProfessionalPracticeSystem extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterStudent.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterStudent.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterProject.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InactivateProfessor.fxml"));
         
         Parent root = loader.load();
