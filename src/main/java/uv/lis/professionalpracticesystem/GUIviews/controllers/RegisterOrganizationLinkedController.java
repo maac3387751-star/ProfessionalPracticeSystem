@@ -21,6 +21,7 @@ import uv.lis.professionalpracticesystem.Exceptions.DataValidationException;
 import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dao.LinkedOrganizationDAO;
 import uv.lis.professionalpracticesystem.logic.dto.LinkedOrganizationDTO;
+import uv.lis.professionalpracticesystem.logic.utils.DataValidation;
 
 /**
  *
@@ -57,7 +58,7 @@ public class RegisterOrganizationLinkedController {
         
         LinkedOrganizationDTO newLinkedOrganization = new LinkedOrganizationDTO();
         
-        String cleanName = organizationName.getText().trim().replaceAll("\\s{2,}"," ");
+        String cleanName = DataValidation.trimInternalSpaces(organizationName.getText());
         newLinkedOrganization.setOrganizationName(cleanName);
       
         newLinkedOrganization.setOrganizationName(organizationName.getText().trim());
@@ -80,13 +81,11 @@ public class RegisterOrganizationLinkedController {
                     closeWindow(event);
                 } 
                 
-        } catch (DataValidationException ex) {
+        } catch (DataValidationException | DataIntegrityException ex) {
             showSimpleAlert(Alert.AlertType.WARNING,"Datos inválidos", ex.getMessage());
-        } catch (DataIntegrityException ex) {
-            showSimpleAlert(Alert.AlertType.WARNING, "Error de integridad", ex.getMessage());
         }
             catch (DatabaseSystemException ex) {
-            LOGGER.log(Level.SEVERE, "No se pudo registrar la organización en la base de datos", ex);
+            LOGGER.log(Level.SEVERE, "Error de base de datos", ex);
             showSimpleAlert(Alert.AlertType.ERROR,"Error del servidor",
                     "No se pudo conectar a la base de datos, inténtelo más tarde");
         } catch (Exception ex) {
@@ -101,19 +100,19 @@ public class RegisterOrganizationLinkedController {
             return true;
         }
         
-        if (isInvalidName()) {
+        if (DataValidation.isInvalidEmail(organizationName.getText())) {
             showSimpleAlert(Alert.AlertType.WARNING,"Formato inválido","El formato del "
                     + "nombre no es válido.");
             return true;
         }
         
-        if (isInvalidEmail()) {
+        if (DataValidation.isInvalidEmail(organizationEmail.getText())) {
             showSimpleAlert(Alert.AlertType.WARNING,"Correo inválido","El formato del "
                     + " Email no es válido.");
             return true;
         }
         
-        if (isInvalidPhoneNumber()) {
+        if (DataValidation.isInvalidPhoneNumber(phoneNumberOrganization.getText())) {
             showSimpleAlert(Alert.AlertType.WARNING,"Número de teléfono inválido","El formato del "
                     + "número de teléfono no es válido.");
             return true;
@@ -129,23 +128,7 @@ public class RegisterOrganizationLinkedController {
                 organizationState.getText().trim().isEmpty() || phoneNumberOrganization.getText().trim().isEmpty() ||
                 organizationEmail.getText().trim().isEmpty();
     }
-    
-    private boolean isInvalidName() {
-       String namePattern = "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ](.*[a-zA-z0-9áéíóúÁÉÍÓÚñÑ])?$";
-       return !organizationName.getText().matches(namePattern);
-    }
-    
-    private boolean isInvalidEmail() {
-        String emailPattern = "^[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,6}$";
-        
-        return !organizationEmail.getText().trim().matches(emailPattern);
-    }
-    
-    private boolean isInvalidPhoneNumber() {
-        String phoneNumberPattern = "^\\d{7,15}$";
-        return !phoneNumberOrganization.getText().trim().matches(phoneNumberPattern);
-        }
-
+  
     @FXML
     private void cancelRegistration(ActionEvent event) {
         showSimpleAlert(Alert.AlertType.INFORMATION,"Cancelación","Registro cancelado.");

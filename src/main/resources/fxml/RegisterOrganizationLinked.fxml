@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:controller="uv.lis.professionalpracticesystem.GUIviews.controllers.RegisterOrganizationLinkedController"
+          xmlns:fx="http://javafx.com/fxml"
+          alignment="CENTER" 
+          hgap="15"
+          vgap="15"> 
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <Label text="Nombre de la Empresa:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="organizationName" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+
+    <Label text="Sector:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <ComboBox fx:id="organizationSector" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+
+    <Label text="Dirección:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="addressOrganization" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="Ciudad:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="organizationCity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="organizationState" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <TextField fx:id="phoneNumberOrganization" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Label text="Correo Electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <TextField fx:id="organizationEmail" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+    <Label text="Usuarios Directos:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <Spinner fx:id="primaryUsers" GridPane.columnIndex="1" GridPane.rowIndex="7" prefWidth="300"/>
+
+    <Label text="Usuarios Indirectos:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+    <Spinner fx:id="secondaryUsers" GridPane.columnIndex="1" GridPane.rowIndex="8" prefWidth="300"/>
+
+    <HBox spacing="20" alignment="center_right" GridPane.columnIndex="1" GridPane.rowIndex="10">
+        <Button text="Registrar" onAction="#registerNewOrganization" prefWidth="100"/>
+        <Button text="Cancelar" onAction="#cancelRegistration" prefWidth="100"/>
+    </HBox>
+
+</GridPane>

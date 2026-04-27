@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dao.ProfessorDAO;
 import uv.lis.professionalpracticesystem.logic.dto.ProfessorDTO;
+import uv.lis.professionalpracticesystem.logic.utils.DataValidation;
 
 /**
  *
@@ -40,20 +41,27 @@ public class InactivateProfessorController {
     private void handleSearchProfessor(ActionEvent event) {
         String professorId = searchFacultyId.getText().trim();
         
-        if (professorId.isEmpty()) {
-            showSimpleAlert(Alert.AlertType.WARNING,"Dato requerido", "Ingrese un número de personal.");
+        if (DataValidation.isInvalidFacultyId(professorId)) {
+            showSimpleAlert(Alert.AlertType.WARNING,"Dato no válido", "El campo número "
+                    + "de personal debe contener solo dígitos y no estar vacío.");
             return;
         }
         
         try {
             currentProfessor = professorDAO.getProfessorByFacultyId(professorId);
             if (currentProfessor == null) {
-                professorDataPane.setVisible(false);
-                inactivateButton.setDisable(true);
+                resetInterface();
                 showSimpleAlert(Alert.AlertType.ERROR,"No encontrado","No se encontro información "
                         + "ligada a ese número de personal.");
             } else {
-                professorNames.setText(currentProfessor.getFacultyId());
+                
+                if ("Inactivo".equalsIgnoreCase(currentProfessor.getProfessorStatus())) {
+                    resetInterface();
+                    showSimpleAlert(Alert.AlertType.WARNING,"Profesor inactivo", "El profesor "
+                            + "se encuentra en estatus Inactivo.");
+                    return;
+                }
+                professorNames.setText(DataValidation.trimInternalSpaces(currentProfessor.getFacultyId()));
                 professorEmail.setText(currentProfessor.getEmail());
                 professorShift.setText(currentProfessor.getProfessorShift());
                 
@@ -70,6 +78,7 @@ public class InactivateProfessorController {
     private void handleInactivate(ActionEvent event) {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Confirmación de inactividad");
+        confirm.setHeaderText(null);
         confirm.setContentText("¿Estás seguro de inactivar al PROFESOR?");
         
         if (confirm.showAndWait().get() == ButtonType.OK) {
@@ -89,6 +98,10 @@ public class InactivateProfessorController {
     @FXML
     private void handleCancel(ActionEvent event) {
         ((javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow()).close();
+    }
+    private void resetInterface() {
+        professorDataPane.setVisible(false);
+        inactivateButton.setDisable(true);
     }
     
     private void showSimpleAlert(Alert.AlertType type, String title, String content){
