@@ -2,7 +2,7 @@ module uv.lis.professionalpracticesystem {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
 
     opens uv.lis.professionalpracticesystem to javafx.graphics, javafx.fxml;
     opens uv.lis.professionalpracticesystem.presentation.controllers to javafx.fxml;
