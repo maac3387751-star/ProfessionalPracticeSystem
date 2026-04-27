@@ -1,4 +1,4 @@
-package uv.lis.professionalpracticesystem.GUIviews.controllers;
+package uv.lis.professionalpracticesystem.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -8,6 +8,8 @@ import java.util.List;
 
 import uv.lis.professionalpracticesystem.logic.dao.StudentDAO;
 import uv.lis.professionalpracticesystem.logic.dao.UserDAO;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dao.CourseDAO;
 import uv.lis.professionalpracticesystem.logic.dao.ProjectDAO;
 
@@ -15,11 +17,12 @@ import uv.lis.professionalpracticesystem.logic.dto.StudentDTO;
 import uv.lis.professionalpracticesystem.logic.dto.UserDTO;
 import uv.lis.professionalpracticesystem.logic.dto.CourseDTO;
 import uv.lis.professionalpracticesystem.logic.dto.ProjectDTO;
-
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-
 import uv.lis.professionalpracticesystem.logic.utils.DataValidation;
+
+/** 
+ * 
+ * @author Miguel Aguilar
+ */
 
 public class RegisterStudentController {
 
@@ -44,6 +47,7 @@ public class RegisterStudentController {
 
         try {
             CourseDAO courseDAO = new CourseDAO();
+
             listCourses = courseDAO.getListCourses();
             if (nrcComboBox != null) {
                 for (CourseDTO course : listCourses) {
@@ -52,6 +56,7 @@ public class RegisterStudentController {
             }
 
             ProjectDAO projectDAO = new ProjectDAO();
+
             listProjects = projectDAO.getListProjects();
             if (projectComboBox != null) {
                 for (ProjectDTO project : listProjects) {
@@ -67,6 +72,7 @@ public class RegisterStudentController {
     public void handleRegisterStudent() {
         if (validateFields()) {
             UserDTO user = new UserDTO();
+
             if (namesTextField != null) {
                 user.setNames(DataValidation.trimInternalSpaces(namesTextField.getText()));
             }
@@ -81,17 +87,21 @@ public class RegisterStudentController {
             }
 
             UserDAO userDAO = new UserDAO();
+
             try {
                 int generatedUserId = userDAO.registerUser(user);
 
                 if (generatedUserId > 0) {
                     StudentDTO student = new StudentDTO();
+
                     student.setIdUser(generatedUserId);
 
-                    if (enrollmentTextField != null)
+                    if (enrollmentTextField != null) {
                         student.setEnrollment(DataValidation.formatEnrollment(enrollmentTextField.getText()));
-                    if (genderComboBox != null && genderComboBox.getValue() != null)
+                    }
+                    if (genderComboBox != null && genderComboBox.getValue() != null) {
                         student.setGender(genderComboBox.getValue());
+                    }
                     if (indigenousLanguageTextField != null) {
                         String language = DataValidation.trimInternalSpaces(indigenousLanguageTextField.getText());
                         student.setIndigenousLanguage(language.isEmpty() ? null : language);
@@ -135,8 +145,12 @@ public class RegisterStudentController {
     @FXML
     public void handleCancelRegister() {
         javafx.scene.Node node = null;
-        if (namesTextField != null) node = namesTextField;
-        else if (enrollmentTextField != null) node = enrollmentTextField;
+
+        if (namesTextField != null) {
+            node = namesTextField;
+        } else if (enrollmentTextField != null) {
+            node = enrollmentTextField;
+        }
 
         if (node != null && node.getScene() != null) {
             javafx.stage.Stage stage = (javafx.stage.Stage) node.getScene().getWindow();
@@ -189,6 +203,7 @@ public class RegisterStudentController {
 
     private void showMessage(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
+
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
@@ -196,14 +211,32 @@ public class RegisterStudentController {
     }
 
     private void clearFields() {
-        if (namesTextField != null) namesTextField.clear();
-        if (lastNamesTextField != null) lastNamesTextField.clear();
-        if (emailTextField != null) emailTextField.clear();
-        if (phoneTextField != null) phoneTextField.clear();
-        if (enrollmentTextField != null) enrollmentTextField.clear();
-        if (indigenousLanguageTextField != null) indigenousLanguageTextField.clear();
-        if (genderComboBox != null) genderComboBox.getSelectionModel().clearSelection();
-        if (nrcComboBox != null) nrcComboBox.getSelectionModel().clearSelection();
-        if (projectComboBox != null) projectComboBox.getSelectionModel().clearSelection();
+        if (namesTextField != null) {
+            namesTextField.clear();
+        }
+        if (lastNamesTextField != null) {
+            lastNamesTextField.clear();
+        }
+        if (emailTextField != null) {
+            emailTextField.clear();
+        }
+        if (phoneTextField != null) {
+            phoneTextField.clear();
+        }
+        if (enrollmentTextField != null) {
+            enrollmentTextField.clear();
+        }
+        if (indigenousLanguageTextField != null) {
+            indigenousLanguageTextField.clear();
+        }
+        if (genderComboBox != null) {
+            genderComboBox.getSelectionModel().clearSelection();
+        }
+        if (nrcComboBox != null) {
+            nrcComboBox.getSelectionModel().clearSelection();
+        }
+        if (projectComboBox != null) {
+            projectComboBox.getSelectionModel().clearSelection();
+        }
     }
 }

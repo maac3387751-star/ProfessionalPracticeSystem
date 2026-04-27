@@ -1,9 +1,7 @@
 package uv.lis.professionalpracticesystem.logic.dto;
 
-
-
 /** 
- * Data Transfer Object for Course.
+ * 
  * @author Miguel Aguilar
  */
 public class CourseDTO {

@@ -2,10 +2,8 @@ package uv.lis.professionalpracticesystem.logic.dto;
 
 import java.time.LocalDate;
 
-
-
 /** 
- * Data Transfer Object for Task.
+ * 
  * @author Miguel Aguilar 
  */
 public class TaskDTO {

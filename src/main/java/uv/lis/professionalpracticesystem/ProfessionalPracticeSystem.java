@@ -6,8 +6,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.ActivityLogDTO;
 import uv.lis.professionalpracticesystem.logic.dto.CourseDTO;
 import uv.lis.professionalpracticesystem.logic.dto.LinkedOrganizationDTO;
@@ -19,15 +27,8 @@ import uv.lis.professionalpracticesystem.logic.dao.ActivityLogDAO;
 import uv.lis.professionalpracticesystem.logic.dao.CourseDAO;
 import uv.lis.professionalpracticesystem.logic.dao.ProjectDAO;
 import uv.lis.professionalpracticesystem.logic.dao.StudentDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
-import java.time.LocalDate;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import java.time.LocalDate;
 
 /**
  *
@@ -38,37 +39,26 @@ public class ProfessionalPracticeSystem extends Application {
     private static final Logger LOGGER = Logger.getLogger(ProfessionalPracticeSystem.class.getName());
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
 
-        /*
-        FXMLLoader loader = new
-        FXMLLoader(getClass().getResource("/RegisterProjectFXML.fxml"));
-        
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Sistema de Prácticas Profesionales");
-        stage.show();
-        */
-
-        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegisterStudentFXML.fxml"));
-
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegisterProjectFXML.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InactivateProfessor.fxml"));
+        
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stage.setScene(scene);
+        
         stage.setTitle("Sistema de Prácticas Profesionales");
+        stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         
     }
-    
-    public static void startGUIRegisterProject() {
-        
-    }
+
 
     public static void main(String[] args) throws IOException {
-
-        launch();
+        launch(args);
 
         MySQLConnectionDataAccess newDataBaseConnection = new MySQLConnectionDataAccess();
 

@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package uv.lis.professionalpracticesystem.GUIviews;
+package uv.lis.professionalpracticesystem.presentation;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -24,6 +20,8 @@ public class PPSMainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegisterStudentFXML.fxml"));
+           //FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegisterProjectFXML.fxml"));
+           //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegisterOrganizationLinked.fxml"));
            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InactivateProfessor.fxml"));
            Parent root = loader.load();
            

@@ -5,15 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.CourseDTO;
 import uv.lis.professionalpracticesystem.logic.dto.ProfessorDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.ICourseDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
 
 /**
- * Data Access Object for handling Course persistence.
  * 
  * @author Miguel Aguilar
  */
@@ -24,13 +23,7 @@ public class CourseDAO implements ICourseDAO {
         this.newDataBaseConnection = new MySQLConnectionDataAccess();
     }
 
-    /**
-     * Registers a new Course in the database.
-     * 
-     * @param newCourse The CourseDTO containing the course details to register.
-     * @return true if the course was registered successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean registerCourse(CourseDTO newCourse) throws DatabaseSystemException, DataIntegrityException {
         boolean isRegistered = false;
@@ -72,13 +65,7 @@ public class CourseDAO implements ICourseDAO {
         return isRegistered;
     }
 
-    /**
-     * Retrieves a Course by its NRC from the database.
-     * 
-     * @param nrc The NRC of the course to retrieve.
-     * @return CourseDTO with the retrieved data, or null if not found.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public CourseDTO getCourseByNRC(int nrc) throws DatabaseSystemException, EntityNotFoundException {
         CourseDTO course = null;

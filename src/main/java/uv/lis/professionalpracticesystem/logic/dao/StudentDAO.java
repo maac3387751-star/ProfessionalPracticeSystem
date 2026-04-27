@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.StudentDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.IStudentDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
 
 
 
 /**
- * Data Access Object for handling Student persistence.
+ * 
  * @author Miguel Aguilar
  */
 public class StudentDAO implements IStudentDAO {
@@ -27,13 +27,7 @@ public class StudentDAO implements IStudentDAO {
 
 
 
-    /**
-     * Registers a new Student in the database.
-     * 
-     * @param newStudent The StudentDTO containing the student details to register.
-     * @return true if the student was registered successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean registerStudent(StudentDTO newStudent) throws DatabaseSystemException, DataIntegrityException {
         boolean isRegistered = false; 
@@ -77,13 +71,7 @@ public class StudentDAO implements IStudentDAO {
 
 
 
-    /**
-     * Deactivates a Student by setting their linked user status to false.
-     * 
-     * @param enrollment The enrollment of the student to deactivate.
-     * @return true if the student was deactivated successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean deactivateStudent(String enrollment) throws DatabaseSystemException, EntityNotFoundException {
         boolean isDeactivated = false;

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 
 /** 
- * Data Transfer Object for Activity Log.
+ * 
  * @author Miguel Aguilar
  */
 public class ActivityLogDTO {

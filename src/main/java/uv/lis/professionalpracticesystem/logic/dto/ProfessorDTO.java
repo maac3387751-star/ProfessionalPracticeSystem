@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uv.lis.professionalpracticesystem.logic.dto;
 
 import java.sql.Date;
 
 /**
  *
- * @author MAC33
+ * @author Miguel Aguilar
  */
-public class ProfessorDTO extends UserDTO{
-private String facultyId;
+public class ProfessorDTO extends UserDTO {
+    private String facultyId;
     private String professorShift;
     private Boolean isUserCoordinator;
     private Date registrationDate;

@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.ProjectDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.IProjectDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
 
 
 
 /** 
- * Data Access Object for handling Project persistence.
+ * 
  * @author Miguel Aguilar 
  */
 public class ProjectDAO implements IProjectDAO {
@@ -27,13 +27,7 @@ public class ProjectDAO implements IProjectDAO {
 
 
 
-    /**
-     * Registers a new Project in the database.
-     * 
-     * @param newProject The ProjectDTO containing the project details to register.
-     * @return true if the project was registered successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override 
     public boolean registerProject(ProjectDTO newProject) throws DatabaseSystemException, DataIntegrityException {
         boolean isRegistered = false; 
@@ -100,13 +94,7 @@ public class ProjectDAO implements IProjectDAO {
 
 
 
-    /**
-     * Updates an existing Project in the database.
-     * 
-     * @param project The ProjectDTO containing the updated project details.
-     * @return true if the project was updated successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override 
     public boolean updateProject(ProjectDTO project) throws DatabaseSystemException, EntityNotFoundException {
         boolean isUpdated = false;

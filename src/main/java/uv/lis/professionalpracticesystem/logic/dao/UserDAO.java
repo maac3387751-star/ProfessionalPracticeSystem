@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
+
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dto.UserDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.IUserDAO;
 

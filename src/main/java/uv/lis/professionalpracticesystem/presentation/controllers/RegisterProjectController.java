@@ -1,4 +1,4 @@
-package uv.lis.professionalpracticesystem.GUIviews.controllers;
+package uv.lis.professionalpracticesystem.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,15 +9,20 @@ import javafx.scene.control.ComboBox;
 import java.time.LocalDate;
 import uv.lis.professionalpracticesystem.logic.dao.ProjectDAO;
 import uv.lis.professionalpracticesystem.logic.dto.ProjectDTO;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dao.LinkedOrganizationDAO;
 import uv.lis.professionalpracticesystem.logic.dao.TechnicalSupervisorDAO;
 import uv.lis.professionalpracticesystem.logic.dto.LinkedOrganizationDTO;
 import uv.lis.professionalpracticesystem.logic.dto.TechnicalSupervisorDTO;
 import java.util.List;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
 
 import uv.lis.professionalpracticesystem.logic.utils.DataValidation;
+
+/** 
+ * 
+ * @author Miguel Aguilar
+ */
 
 public class RegisterProjectController {
 
@@ -43,6 +48,7 @@ public class RegisterProjectController {
     public void initialize() {
         try {
             LinkedOrganizationDAO linkedOrganizationDAO = new LinkedOrganizationDAO();
+
             linkedOrganizations = linkedOrganizationDAO.getLinkedOrganization();
             if (organizationComboBox != null) {
                 for (LinkedOrganizationDTO organizationDTO : linkedOrganizations) {
@@ -51,6 +57,7 @@ public class RegisterProjectController {
             }
 
             TechnicalSupervisorDAO technicalSupervisorDAO = new TechnicalSupervisorDAO();
+
             technicalSupervisors = technicalSupervisorDAO.getTechnicalSupervisorsList();
             if (responsibleComboBox != null) {
                 for (TechnicalSupervisorDTO supervisorDTO : technicalSupervisors) {
@@ -66,6 +73,7 @@ public class RegisterProjectController {
     public void handleRegisterProject() {
         if (validateFields()) {
             ProjectDTO project = new ProjectDTO();
+
             if (projectNameTextField != null) {
                 project.setProjectName(DataValidation.trimInternalSpaces(projectNameTextField.getText()));
             }
@@ -131,6 +139,7 @@ public class RegisterProjectController {
             project.setStatus("Disponible");
 
             ProjectDAO projectDAO = new ProjectDAO();
+
             try {
                 boolean isRegistered = projectDAO.registerProject(project);
                 if (isRegistered) {
@@ -148,6 +157,7 @@ public class RegisterProjectController {
     @FXML
     public void handleCancelRegister() {
         javafx.scene.Node node = null;
+
         if (projectNameTextField != null)
             node = projectNameTextField;
         else if (descriptionTextArea != null)
@@ -231,6 +241,7 @@ public class RegisterProjectController {
 
     private void showMessage(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
+
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);

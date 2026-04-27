@@ -1,6 +1,6 @@
 package uv.lis.professionalpracticesystem.logic.interfaces;
 
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dto.UserDTO;
 
 public interface IUserDAO {

@@ -32,20 +32,26 @@ public class DataValidation {
     public static boolean isInvalidFacultyId(String facultyId) {
         return facultyId == null || !facultyId.trim().matches(FACULTY_ID_PATTERN);
     }
-    
-    public static String trimInternalSpaces(String text) {
-        if (text == null) return "";
-        return text.trim().replaceAll("\\s{2,}", " ");
-    }
-    
+
     public static boolean isInvalidText(String text, int minLength) {
-        if (text == null) return true;
+        if (text == null) {
+            return true;
+        }
         String cleanText = trimInternalSpaces(text);
         return cleanText.length() < minLength;
     }
     
+    public static String trimInternalSpaces(String text) {
+        if (text == null) {
+            return "";
+        }
+        return text.trim().replaceAll("\\s{2,}", " ");
+    }
+    
     public static String formatPhone(String phone) {
-        if (phone == null) return null;
+        if (phone == null) { 
+            return null; 
+        }
         String cleanPhone = phone.replaceAll("[^0-9]", "");
         if (cleanPhone.length() == 10) {
             return cleanPhone;
@@ -54,7 +60,9 @@ public class DataValidation {
     }
     
     public static String formatEnrollment(String enrollment) {
-        if (enrollment == null) return null;
+        if (enrollment == null) { 
+            return null; 
+        }
         String cleanEnrollment = trimInternalSpaces(enrollment);
         if (cleanEnrollment.matches("^[sSzZ]\\d{8}$")) {
             return "S" + cleanEnrollment.substring(1);

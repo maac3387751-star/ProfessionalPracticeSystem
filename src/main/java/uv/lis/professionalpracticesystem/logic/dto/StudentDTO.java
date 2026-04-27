@@ -1,9 +1,7 @@
 package uv.lis.professionalpracticesystem.logic.dto;
 
-
-
 /** 
- * Data Transfer Object for Student.
+ * 
  * @author Miguel Aguilar 
  */
 public class StudentDTO extends UserDTO {

@@ -5,18 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.ActivityLogDTO;
 import uv.lis.professionalpracticesystem.logic.dto.StudentDTO;
 import uv.lis.professionalpracticesystem.logic.dto.ProjectDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.IActivityLogDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
 
 
 
 /** 
- * Data Access Object for handling Activity Log persistence.
+ * 
  * @author Miguel Aguilar
  */
 public class ActivityLogDAO implements IActivityLogDAO {
@@ -30,13 +30,7 @@ public class ActivityLogDAO implements IActivityLogDAO {
 
 
 
-    /**
-     * Registers a new Activity Log in the database.
-     * 
-     * @param newActivityLog The ActivityLogDTO containing the log details to register.
-     * @return true if the activity log was registered successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean registerActivityLog(ActivityLogDTO newActivityLog) throws DatabaseSystemException, DataIntegrityException {
         boolean isRegistered = false;
@@ -84,13 +78,7 @@ public class ActivityLogDAO implements IActivityLogDAO {
 
 
 
-    /**
-     * Updates the status and validation notes of an existing Activity Log.
-     * 
-     * @param activityLog The ActivityLogDTO containing the updated status and notes.
-     * @return true if the activity log status was updated successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean updateActivityLogStatus(ActivityLogDTO activityLog) throws DatabaseSystemException, EntityNotFoundException {
         boolean isUpdated = false;
@@ -121,13 +109,7 @@ public class ActivityLogDAO implements IActivityLogDAO {
 
 
 
-    /**
-     * Retrieves an Activity Log by its ID from the database.
-     * 
-     * @param activityLogId The ID of the activity log to retrieve.
-     * @return ActivityLogDTO with the retrieved data, or null if not found.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public ActivityLogDTO getActivityLogById(int activityLogId) throws DatabaseSystemException, EntityNotFoundException {
         ActivityLogDTO activityLog = null;

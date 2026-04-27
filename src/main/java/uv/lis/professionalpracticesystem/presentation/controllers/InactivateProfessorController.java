@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package uv.lis.professionalpracticesystem.GUIviews.controllers;
+package uv.lis.professionalpracticesystem.presentation.controllers;
 
 
 import java.util.logging.Level;
@@ -15,7 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dao.ProfessorDAO;
 import uv.lis.professionalpracticesystem.logic.dto.ProfessorDTO;
 

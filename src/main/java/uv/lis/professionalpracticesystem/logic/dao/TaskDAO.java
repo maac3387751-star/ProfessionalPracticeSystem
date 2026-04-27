@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
+import uv.lis.professionalpracticesystem.exceptions.EntityNotFoundException;
 import uv.lis.professionalpracticesystem.logic.dto.TaskDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.ITaskDAO;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.EntityNotFoundException;
 
 
 
 /**
- * Data Access Object for handling Task persistence.
+ * 
  * @author Miguel Aguilar
  */
 public class TaskDAO implements ITaskDAO {
@@ -27,13 +27,7 @@ public class TaskDAO implements ITaskDAO {
 
 
 
-    /**
-     * Registers a new Task in the database.
-     * 
-     * @param newTask The TaskDTO containing the task details to register.
-     * @return true if the task was registered successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean registerTask(TaskDTO newTask) throws DatabaseSystemException, DataIntegrityException {
         boolean isRegistered = false;
@@ -76,13 +70,7 @@ public class TaskDAO implements ITaskDAO {
 
 
 
-    /**
-     * Updates the progress, hours, dates, and notes of an existing Task.
-     * 
-     * @param task The TaskDTO containing the updated progress details.
-     * @return true if the task progress was updated successfully, false otherwise.
-     * @throws DatabaseSystemException if a database error occurs.
-     */
+
     @Override
     public boolean updateTaskProgress(TaskDTO task) throws DatabaseSystemException, EntityNotFoundException {
         boolean isUpdated = false;

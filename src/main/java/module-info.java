@@ -5,9 +5,9 @@ module uv.lis.professionalpracticesystem {
     requires javafx.graphics;
 
     opens uv.lis.professionalpracticesystem to javafx.graphics, javafx.fxml;
-    opens uv.lis.professionalpracticesystem.GUIviews.controllers to javafx.fxml;
+    opens uv.lis.professionalpracticesystem.presentation.controllers to javafx.fxml;
 
     exports uv.lis.professionalpracticesystem;
-    exports uv.lis.professionalpracticesystem.GUIviews;
-    exports uv.lis.professionalpracticesystem.GUIviews.controllers;
+    exports uv.lis.professionalpracticesystem.presentation;
+    exports uv.lis.professionalpracticesystem.presentation.controllers;
 }

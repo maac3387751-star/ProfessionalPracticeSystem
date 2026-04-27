@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uv.lis.professionalpracticesystem.logic.dao;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uv.lis.professionalpracticesystem.Exceptions.DataIntegrityException;
-import uv.lis.professionalpracticesystem.Exceptions.DataValidationException;
-import uv.lis.professionalpracticesystem.Exceptions.DatabaseSystemException;
+
 import uv.lis.professionalpracticesystem.dataaccess.MySQLConnectionDataAccess;
+import uv.lis.professionalpracticesystem.exceptions.DataIntegrityException;
+import uv.lis.professionalpracticesystem.exceptions.DataValidationException;
+import uv.lis.professionalpracticesystem.exceptions.DatabaseSystemException;
 import uv.lis.professionalpracticesystem.logic.dto.LinkedOrganizationDTO;
 import uv.lis.professionalpracticesystem.logic.interfaces.ILinkedOrganizationDAO;
 
